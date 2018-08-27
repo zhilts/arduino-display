@@ -27,16 +27,16 @@ void Display::init() {
 
 int binV[] = {B11111100, B01100000, B11011010, B11110010, B01100110, B10110110, B10111110, B11100000, B11111110,
               B11110110, B11101110, B00111110, B10011100};
-char strV[] = "0123456789";
+String strV = "0123456789";
 
 
-int getMap(int v) {
-    for (unsigned int i = 0; i < sizeof(strV); ++i) {
-        if (strV[i] == v) {
-            return binV[i];
-        }
+int getMap(char v) {
+    int i = strV.indexOf(v);
+    if (i == -1) {
+        return B00000001;
+    } else {
+        return binV[i];
     }
-    return B00000001;
 }
 
 void Display::tick() {
@@ -62,5 +62,9 @@ void Display::tick() {
 }
 
 void Display::setValue(String value) {
-    _value = value;
+    String tempValue = value;
+    while (tempValue.length() < 4) {
+        tempValue = " " + tempValue;
+    }
+    _value = tempValue;
 }
