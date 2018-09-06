@@ -1,4 +1,4 @@
-#include "Arduino.h"
+#include <Arduino.h>
 #include "Display.h"
 
 Display::Display(int dsPin, int shcpPin, int stcpPin) {

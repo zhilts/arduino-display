@@ -1,4 +1,6 @@
-#include <Display.h>
+#include <Arduino.h>
+#include "Display.h"
+
 // register
 int dsPin = 2; // data pin
 int shcpPin = 4; // sync arduino -> internal
@@ -12,5 +14,6 @@ void setup() {
 
 void loop() {
     display.tick();
+    display.setValue(String(millis() / 1000));
     delay(5);
 }

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
-project(display CXX)
-set(SOURCE_FILE src/main.ico)
+project(arduino-display)
+
 include(CMakeListsPrivate.txt)
 
 add_custom_target(
