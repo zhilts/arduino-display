@@ -37,7 +37,7 @@ uint8_t getDigitMap(char v) {
 }
 
 uint8_t getSectionMap(int index) {
-    return ~(1 << index) & B01111111;
+    return ~(1 << index);
 }
 
 uint16_t getMap(char v, int index) {
@@ -50,7 +50,7 @@ uint16_t getMap(char v, int index) {
 void Display::tick() {
     _currentIndex = (_currentIndex + 1) % 4;
     char symbol = _value[3 - _currentIndex];
-    int binValue = getMap(symbol, _currentIndex);
+    uint16_t binValue = getMap(symbol, _currentIndex);
     for (int i = 0; i < 16; ++i) {
         if (binValue % 2 == 1) {
             digitalWrite(_dsPin, HIGH);
